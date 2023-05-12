@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="./public/styles.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <style>
+    img {
+      max-height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="search_bar">
+    <label class="text-blue-b">PRICE COMPARISON</label>
+  </div>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+  function App() {
+    const [data, setData] = React.useState([]);
+
+    const [input, setInput] = React.useState([]);
+    const [page, setPage] = React.useState(1);
+    const [show, setShow] = React.useState({ prev: false, next: false })
+
+    React.useEffect(() => {
+      fetch(`/search?product=${input}&page=${page}`)
+        .then(res => res.json())
+        .then(res => {
+          console.log(res)
+          setData(res.result);
+          setShow(res);
+        });
+    }, [input, page])
+
+    return <div class="jumbotron">
+      <h3>Search</h3>
+      <input onChange={(e) => setInput(e.currentTarget.value)} />
+      {show.prev && <button onClick={() => setPage(page - 1)}>Previous Page</button>}
+      {show.next && <button onClick={() => setPage(page + 1)}>Next Page</button>}
+      <hr />
+      <div class="card_container">
+        {
+          data.map(each =>
+            <div className="card" key={each.key} onClick={e => { window.open(each.product_url) }}>
+              <img class="display_img" src={each.product_image} />
+              <p>Product Name: {each.product_name}</p>
+              <p>Price: {each.product_price}</p>
+              <p>Description: {each.product_description}</p>
+            </div>)
+        }
+      </div>
+    </div>
+  }
+
+  ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+</script>
+
+</html>

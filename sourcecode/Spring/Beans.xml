@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id = "SDScraper" class="SDScraper"></bean>
+    <bean id = "SDScraper1" class="SDScraper1"></bean>
+    <bean id = "SDScraper2" class="SDScraper2"></bean>
+    <bean id = "NikeScraper" class="NikeScraper"></bean>
+    <bean id = "ScraperA" class="ScraperA"></bean>
+    <bean id = "LiverpoolScraper" class="LiverpoolScraper"></bean>
+    <bean id = "AmazonScraper1" class="AmazonScraper1"></bean>
+    <bean id = "AmazonScraper2" class="AmazonScraper2"></bean>
+    <bean id = "KitBagScraper1" class="KitBagScraper1"></bean>
+    <bean id = "KitBagScraper2" class="KitBagScraper2"></bean>
+
+   <bean id = "scraperManager" class = "scraperManager">
+      <property name = "SDScraper" ref = "SDScraper"/>
+      <property name = "SDScraper1" ref = "SDScraper1"/>
+      <property name = "SDScraper2" ref = "SDScraper2"/>
+      <property name = "NikeScraper" ref = "NikeScraper"/>
+      <property name = "ArsenalScraper" ref = "ArsenalScraper"/>
+      <property name = "LiverpoolScraper" ref = "LiverpoolScraper"/>
+      <property name = "AmazonScraper1" ref = "AmazonScraper1"/>
+      <property name = "AmazonScraper2" ref = "AmazonScraper2"/>
+      <property name = "KitBagScraper1" ref = "KitBagScraper1"/>
+      <property name = "KitBagScraper1" ref = "KitBagScraper1"/>
+   </bean>
+   
+</beans>
+

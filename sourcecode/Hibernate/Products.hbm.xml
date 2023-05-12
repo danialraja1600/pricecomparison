@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.danialraja.hibernate.Products" table="products">
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class="increment"/>
+        </id>
+        <property name = "kitId" type="int">
+            <column name = "kit_id"/>
+        </property>
+        <property name="teamId" type="int">
+            <column name="team_id"/>
+        </property>
+        <property name="productName" type="string">
+            <column name="product_name"/>
+        </property>
+        <property name="productUrl" type="string">
+            <column name="product_url"/>
+        </property>
+        <property name="productDescription" type="string">
+            <column name="product_description"/>
+        </property>
+        <property name="productImage" type="image">
+            <column name="product_image"/>
+        </property>
+        <property name="productPrice" type="float">
+            <column name="product_price"/>
+        </property>
+    </class>
+</hibernate-mapping>
+
+
